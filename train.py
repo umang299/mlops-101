@@ -58,8 +58,6 @@ if __name__ == "__main__":
             acc_ = acc_ + acc
             count += 1
 
-        # wandb.log({"loss": loss_/count, 
-        #            "Acc": acc_/count })
         print({"loss": loss_/count, 
                 "Acc": acc_/count })
 
