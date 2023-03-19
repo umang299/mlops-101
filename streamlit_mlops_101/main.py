@@ -62,19 +62,20 @@ class StreamlitApp:
         
     
 
-st.set_page_config(layout='wide')
-c1, c2 = st.columns(spec=2)
+if __name__ == "__main__":
+    st.set_page_config(layout='wide')
+    c1, c2 = st.columns(spec=2)
 
-with c1:
-    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-    print(type(uploaded_file))  # Add this line to print the type of uploaded_file
+    with c1:
+        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+        print(type(uploaded_file))  # Add this line to print the type of uploaded_file
 
-    if uploaded_file is not None:
-        app = StreamlitApp(image_path=uploaded_file, model_path="model.pt")
-        image = app.load_image()
-    else:
-        st.write("No image uploaded.")
+        if uploaded_file is not None:
+            app = StreamlitApp(image_path=uploaded_file, model_path="model.pt")
+            image = app.load_image()
+        else:
+            st.write("No image uploaded.")
 
-with c2:
-    if st.button("Predict"):
-        label = app.get_output_label(image=image)
+    with c2:
+        if st.button("Predict"):
+            label = app.get_output_label(image=image)
